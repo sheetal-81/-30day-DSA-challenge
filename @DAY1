@@ -101,3 +101,16 @@ class solution
 }
 
 
+(5)
+You are given a sorted integer array 'arr' of size 'n'.You need to remove the duplicates from the array such that each element appears only once.Return the length of this new array.
+'n' = 5, 'arr' = [1 2 2 2 3].
+The new array will be [1 2 3].
+So our answer is 3.
+
+class solution
+{
+public static int remove_duplicates(int arr[],int n)
+{
+if
+
+
