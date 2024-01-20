@@ -107,10 +107,123 @@ You are given a sorted integer array 'arr' of size 'n'.You need to remove the du
 The new array will be [1 2 3].
 So our answer is 3.
 
+public class Solution {
+    public static int removeDuplicates(int[] arr,int n) {
+        // Write your code here.
+        if(n==0 ||n==1)
+        {
+            return n;
+        }
+        int count=0;
+        for(int i=0;i<n-1;i++)
+        {
+            if(arr[i]!=arr[i+1])
+            {
+                arr[count++]=arr[i];
+            }
+        }
+        arr[count++]=arr[n-1];
+        
+        return count;
+    }
+}
+
+
+(6)
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. 
+The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. 
+The remaining elements of nums are not important as well as the size of nums. Return k.
+
+Example 1:
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
+Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+
+Example 2:
+Input: nums = [0,0,1,1,1,2,2,3,3,4]
+Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums.length==0)
+        {
+            return 0;
+        }
+        int count=0;
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i]!=nums[i+1])
+            {
+                count++;
+                nums[count]=nums[i+1];
+            }
+        }
+        return count+1;
+}
+}
+
+
+(7)
+Given an array 'arr' containing 'n' elements, rotate this array left once and return it.
+Rotating the array left by one means shifting all elements by one place to the left and moving the first element to the last position in the array.
+Example:-	Input: 'a' = 5, 'arr' = [1, 2, 3, 4, 5]		Output: [2, 3, 4, 5, 1]
+moved the 2nd element to the 1st position, and 3rd element to the 2nd position, and 4th element to the 3rd position, and the 5th element to the 4th position, and move the 1st element to the 5th position.
 class solution
 {
-public static int remove_duplicates(int arr[],int n)
-{
-if
+        public static left_shift(int n,int[]arr)
+        {
+                if(arr==null || arr.length<=1)
+                {
+                        return arr;
+                }
+                int first_element=arr[0];
+                for(int i=0;i<n-1;i++)
+                {
+                        arr[i]=arr[i+1];
+                }
+                arr[arr.length-1]=arr[first_element];
+                return arr;
+        }
+}
 
+
+(8)
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+Example 1:
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Example 2:
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        if(n == k || k == 0) {
+            return;
+        }
+        int[] nums2 = new int[n];
+        int idx = 0;
+        for(int x: nums) {
+            nums2[idx++] = x;
+        }
+        for(int i = 0;i<n; i++) {
+            nums[(i+k)%n] = nums2[i];
+        }
+    }
+}
 
