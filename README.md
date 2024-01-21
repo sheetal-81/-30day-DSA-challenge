@@ -1,1 +1,1 @@
-# -30day-DSA-challenge
+# 30day-DSA-challenge
