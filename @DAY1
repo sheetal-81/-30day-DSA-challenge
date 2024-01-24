@@ -1,3 +1,4 @@
+
 (1)
 You have been given an array ‘a’ of ‘n’ unique non-negative integers.Find the second largest and second smallest element from the array.
 Return the two elements (second largest and second smallest) as another array of size 2.
@@ -356,4 +357,77 @@ public class Solution {
         return len;
 	}
 }
+
+(14)
+Problem statement
+You are given an array ‘a’ of ‘n’ integers.You have to return the lexicographically next to greater permutation.
+Note:If such a sequence is impossible, it must be rearranged in the lowest possible order.
+Example:	Input: 'a' = [1, 3, 2]	Output: 2 1 3
+Explanation: All the permutations of [1, 2, 3] are [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1], ]. Hence the next greater permutation of [1, 3, 2] is [2, 1, 3]
+
+import java.util.*;
+public class Solution {
+    public static List<Integer> nextGreaterPermutation(List<Integer> A) {
+        int i = A.size() - 2;
+        while (i >= 0 && A.get(i + 1) <= A.get(i)) {
+            i--;
+        }
+        if (i >= 0) {
+            int j = A.size() - 1;
+            while (j >= 0 && A.get(j) <= A.get(i)) {
+                j--;
+            }
+            Collections.swap(A, i, j);
+        }
+        Collections.reverse(A.subList(i + 1, A.size()));
+        return A;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1, 3, 2);
+        System.out.println(nextGreaterPermutation(nums));
+    }
+}
+
+
+(15)
+You are given an array 'arr' of length 'n', consisting of integers.
+A subarray is a contiguous segment of an array. In other words, a subarray can be formed by removing 0 or more integers from the beginning and 0 or more integers from the end of an array.
+Find the sum of the subarray (including empty subarray) having maximum sum among all subarrays.
+The sum of an empty subarray is 0.
+Example :	Input: 'arr' = [1, 2, 7, -4, 3, 2, -10, 9, 1]	Output: 11	Explanation: The subarray yielding the maximum sum is [1, 2, 7, -4, 3, 2].
+
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	
+	public static long maxSubarraySum(int[] arr, int n) {
+		if(arr.length==1)
+		{
+			return arr[0] > 0 ? arr[0] : 0;
+		}
+		int maxSum=0;
+		int currSum=0;
+		boolean allNegative = true;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i] > 0) {
+				allNegative = false;
+			}
+			currSum+=arr[i];
+			if(currSum>maxSum)
+			{
+				maxSum=currSum;
+			}
+			if(currSum<0)
+			{
+				currSum=0;
+			}
+		}
+		return allNegative ? 0 : maxSum;
+	}
+
+}
+
 
