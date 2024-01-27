@@ -1,0 +1,46 @@
+(1)
+For a given integer array/list 'ARR' of size 'N' containing all distinct values, find the total number of 'Inversions' that may exist.
+An inversion is defined for a pair of integers in the array/list when the following two conditions are met. A pair ('ARR[i]', 'ARR[j]') is said to be an inversion when:
+1. 'ARR[i] > 'ARR[j]' 
+2. 'i' < 'j'
+Where 'i' and 'j' denote the indices ranging from [0, 'N')
+
+import java.util.*;
+class solution
+{
+        public class int(long[] arr,int n)
+        {
+                int count=0;
+                for(int i=0;i<n-1;i++)
+                {
+                        for(intj=i+1;j<n;j++)
+                        {
+                                if(arr[i]>arr[j]
+                                {
+                                        count++;
+                                }
+                        }
+                }
+                return count;
+}
+}
+
+
+(2)
+You are given an array of size ‘N’. The elements of the array are in the range from 1 to ‘N’.
+Ideally, the array should contain elements from 1 to ‘N’. But due to some miscalculations, there is a number R in the range [1, N] which appears in the array twice and another number M in 
+the range [1, N] which is missing from the array. Your task is to find the missing number (M) and the repeating number (R).
+For example:        Consider an array of size six. The elements of the array are { 6, 4, 3, 5, 5, 1 }. 
+The array should contain elements from one to six. Here, 2 is not present and 5 is occurring twice. Thus, 2 is the missing number (M) and 5 is the repeating number (R). 
+
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+
+    public static int[] missingAndRepeating(ArrayList<Integer> arr, int n) {
+
+
+
+
