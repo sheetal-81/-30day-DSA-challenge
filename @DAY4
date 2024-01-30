@@ -111,3 +111,127 @@ public class Solution {
         return longest;
     }
 }
+
+
+
+
+(4)
+Ninja loves playing with numbers. So his friend gives him an array on his birthday. 
+The array consists of positive and negative integers. Now Ninja is interested in finding the length of the longest subarray whose sum is zero.
+
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static int LongestSubsetWithZeroSum(ArrayList<Integer> arr) {
+        HashMap<Integer,Integer> Hm = new HashMap<Integer,Integer>();
+        int sum = 0;
+        int max_len = 0;
+        for(int i = 0; i < arr.size(); i++) {
+            sum = sum + arr.get(i);
+            if(arr.get(i) == 0 && max_len == 0) {
+                max_len = 1;
+            }
+            if(sum == 0) {
+                max_len = i + 1;
+            }
+            Integer prev_i = Hm.get(sum);
+            if(prev_i != null) {
+                max_len = Math.max(max_len, i - prev_i);
+            } else {
+                Hm.put(sum, i);
+            }
+        }
+        return max_len;
+    }
+}
+
+
+
+(5)
+Given an array ‘A’ consisting of ‘N’ integers and an integer ‘B’, find the number of subarrays of array ‘A’ whose bitwise XOR( ⊕ ) of all elements is equal to ‘B’.
+A subarray of an array is obtained by removing some(zero or more) elements from the front and back of the array.
+Example:
+Input: ‘N’ = 4 ‘B’ = 2
+‘A’ = [1, 2, 3, 2]
+
+Output: 3
+
+Explanation: Subarrays have bitwise xor equal to ‘2’ are: [1, 2, 3, 2], [2], [2].
+import java.util.HashMap;
+public class Solution {
+    public static int subarraysWithSumK(int[] a, int b) {
+        int count = 0;
+        int xorPrefixSum = 0;
+        HashMap<Integer, Integer> xorCountMap = new HashMap<>();
+
+        for (int num : a) {
+            xorPrefixSum ^= num;
+
+            if (xorPrefixSum == b) {
+                count++;
+            }
+
+            count += xorCountMap.getOrDefault(xorPrefixSum ^ b, 0);
+            xorCountMap.put(xorPrefixSum, xorCountMap.getOrDefault(xorPrefixSum, 0) + 1);
+        }
+
+        return count;
+    }
+}
+
+
+
+
+(6)
+Given a string input of length n, find the length of the longest substring without repeating characters i.e return a substring that does not have any repeating characters.
+Substring is the continuous sub-part of the string formed by removing zero or more characters from both ends.
+
+import java.util.* ;
+
+import java.io.*; 
+
+public class Solution 
+
+{
+
+    public static int uniqueSubstrings(String input) 
+
+    {
+
+        //write your code here
+
+        HashSet<Character> set=new HashSet<>();
+
+        int aquire=0,release=0,maxChar=0;
+
+        while(aquire<input.length()){
+
+            if(!set.contains(input.charAt(aquire))){
+
+                set.add(input.charAt(aquire));
+
+                aquire++;
+
+                maxChar=Math.max(maxChar,set.size());
+
+            }
+
+            else{
+
+                set.remove(input.charAt(release));
+
+                release++;
+
+ 
+
+            }
+
+        }
+
+        return maxChar;
+
+    }
+
+}
+
+ 
