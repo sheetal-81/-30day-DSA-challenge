@@ -1,0 +1,41 @@
+Problem statement:--Given a singly linked list of integers. Your task is to return the head of the reversed linked list.
+For example:--  The given linked list is 1 -> 2 -> 3 -> 4-> NULL. Then the reverse linked list is 4 -> 3 -> 2 -> 1 -> NULL and the head of the reversed linked list will be 4.
+
+import java.io.*;
+import java.util.* ;
+
+/*
+	Following is the structure of the Singly Linked List.	
+	class LinkedListNode<T> 
+    {
+    	T data;
+    	LinkedListNode<T> next;
+    	public LinkedListNode(T data) 
+        {
+        	this.data = data;
+    	}
+	}
+
+*/
+public class Solution 
+{
+    public static LinkedListNode<Integer> reverseLinkedList(LinkedListNode<Integer> head) 
+    {
+        // Write your code here!
+		if(head==null || head.next==null)
+		{
+			return head;
+		}
+		LinkedListNode<Integer>prevNode=null;
+		LinkedListNode<Integer>currNode=head;
+		LinkedListNode<Integer>nextNode;
+		while(currNode!=null)
+		{
+			nextNode=currNode.next;
+			currNode.next=prevNode;
+			prevNode=currNode;
+			currNode=nextNode;
+		}
+		return prevNode;
+    }
+}
