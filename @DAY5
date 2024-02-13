@@ -1,3 +1,5 @@
+{1} 
+
 Problem statement:--Given a singly linked list of integers. Your task is to return the head of the reversed linked list.
 For example:--  The given linked list is 1 -> 2 -> 3 -> 4-> NULL. Then the reverse linked list is 4 -> 3 -> 2 -> 1 -> NULL and the head of the reversed linked list will be 4.
 
@@ -39,3 +41,31 @@ public class Solution
 		return prevNode;
     }
 }
+
+
+
+
+
+{2}
+
+You are given an array ‘Arr’ of size ‘N’ consisting of positive integers.Make a linked list from the array and return the head of the linked list.
+The head of the linked list is the first element of the array, and the tail of the linked list is the last element.
+Note:	In the output, you will see the elements of the linked list made by you.
+Example:	Input: ‘Arr’ = [4, 2, 5, 1]
+Output: 4 2 5 1
+
+Explanation: Linked List for the array ‘Arr’ = [4, 2, 5, 1] is 4 -> 2 -> 5 -> 1.
+public class Solution {
+    public static Node constructLL(int []arr) {
+        // Write your code here
+        Node head = new Node(arr[0]);
+        Node temp=head;
+        for(int i = 1 ; i < arr.length;i++){
+            Node temp1=new Node(arr[i]);
+            temp.next=temp1;
+            temp=temp1;
+        }
+        return head;
+    }
+}
+0 Up
